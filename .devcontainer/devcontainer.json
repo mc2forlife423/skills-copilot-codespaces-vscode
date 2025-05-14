@@ -1,0 +1,78 @@
+{
+  "name": "CB1-DashCluster",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu", // lightweight Ubuntu base
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "GitHub.copilot",
+        "ms-python.python",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "ms-azuretools.vscode-docker",
+        "ms-vscode.cpptools",
+        "shardulm94.trailing-spaces",
+        "streetsidesoftware.code-spell-checker"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "files.trimTrailingWhitespace": true,
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {},
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts"
+    },
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.11"
+    },
+    "ghcr.io/devcontainers/features/docker-in-docker:1": {}
+  },
+  "postCreateCommand": "sudo apt update && sudo apt install -y net-tools htop i2c-tools",
+  "remoteUser": "vscode",
+  "forwardPorts": [3000, 8080],
+  "mounts": [
+    "source=${localWorkspaceFolder}/data,target=/workspace/data,type=bind"
+  ]
+}
+{
+  "name": "CB1-DashCluster",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu", // Ubuntu-based lightweight base image
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "GitHub.copilot",                         // AI pair programming
+        "ms-python.python",                       // Python support
+        "esbenp.prettier-vscode",                 // Code formatter
+        "dbaeumer.vscode-eslint",                 // JS/TS linting
+        "ms-azuretools.vscode-docker",            // Docker tools
+        "ms-vscode.cpptools",                     // C/C++ tools
+        "shardulm94.trailing-spaces",             // Highlights trailing spaces
+        "streetsidesoftware.code-spell-checker"   // Spell checker for code/comments
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "files.trimTrailingWhitespace": true,
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {},       // git, curl, unzip, nano, etc.
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts"
+    },
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.11"
+    },
+    "ghcr.io/devcontainers/features/docker-in-docker:1": {}    // Run Docker inside container
+  },
+  "postCreateCommand": "sudo apt update && sudo apt install -y net-tools htop i2c-tools build-essential libgtk-3-dev libgl1-mesa-dev",
+  "remoteUser": "vscode",
+  "forwardPorts": [3000, 8080, 5000],
+  "mounts": [
+    "source=${localWorkspaceFolder}/data,target=/workspace/data,type=bind"
+  ]
+}
